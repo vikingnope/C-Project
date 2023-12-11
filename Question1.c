@@ -1,41 +1,44 @@
 #include <stdio.h>
+#include <ctype.h>
 
-void menu(int *choice, int *a, int *b, int *c, int *d, int *e, int *f, int *iterations);
-void secantMethod(void);
-void newtonRaphsonMethod(void);
+void menu(int *a, int *b, int *c, int *d, int *e, int *f, int *iterations);
+void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, int *iterations);
+void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, int *iterations);
 
 int main() {
-    int choice;
     int a, b, c, d, e, f;
     int iterations;
 
-    printf("Enter a ax^5+bx^4+cx^3+dx^2+ex+f=0\n");
-    printf("Enter a:");
+    printf("Enter the polynomial in the format: x^5+bx^4+cx^3+dx^2+ex+f=0\n");
+
+    printf("\n");
+
+    printf("Enter a: ");
     scanf("%d", &a);
 
     printf("\n");
 
-    printf("Enter b:");
+    printf("Enter b: ");
     scanf("%d", &b);
 
     printf("\n");
 
-    printf("Enter c:");
+    printf("Enter c: ");
     scanf("%d", &c);
 
     printf("\n");
 
-    printf("Enter d:");
+    printf("Enter d: ");
     scanf("%d", &d);
 
     printf("\n");
 
-    printf("Enter e:");
+    printf("Enter e: ");
     scanf("%d", &e);
 
     printf("\n");
 
-    printf("Enter f:");
+    printf("Enter f: ");
     scanf("%d", &f);
 
     printf("\n");
@@ -43,37 +46,57 @@ int main() {
     printf("Enter number of iterations: ");
     scanf("%d", &iterations);
 
-    menu(&choice, &a, &b, &c, &d, &e, &f, &iterations);
+    printf("\n");
+
+    menu(&a, &b, &c, &d, &e, &f, &iterations);
 
     return 0;
 }
 
-void menu(int *choice, int *a, int *b, int *c, int *d, int *e, int *f, int *iterations){
+void menu(int *a, int *b, int *c, int *d, int *e, int *f, int *iterations){
+    int choice;
+
     printf("1. Secant Method\n");
     printf("2. Newton-Raphson Method.\n");
     printf("3. Quit\n");
-    printf("Enter your choice:");
-    scanf("%d", choice);
+    printf("Enter your choice: ");
 
-    switch (*choice){
+    while (scanf("%d", &choice) != 1){
+        printf("\n");
+        printf("Please enter a different choice.\n");
+        printf("Enter your choice: ");
+        while (getchar() != '\n');
+    }
+
+    printf("\n");
+
+    switch (choice){
         case 1:
-            secantMethod();
+            secantMethod(a, b, c, d, e, f, iterations);
             break;
         case 2:
-            newtonRaphsonMethod();
+            newtonRaphsonMethod(a, b, c, d, e, f, iterations);
             break;
         case 3:
-            printf("Thank you for using this program,.\n");
+            printf("Thank you for using this program.\n");
             break;
         default:
-            printf("Invalid choice.\n");
-            menu(choice, a, b, c, d, e, f, iterations);
+            printf("Invalid choice from menu.\n");
+            menu(a, b, c, d, e, f, iterations);
     }
 }
 
-void secantMethod(){
+void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, int *iterations){
+
+    printf("Secant Method\n");
+
+
+    menu(a, b, c, d, e, f, iterations);
 }
 
-void newtonRaphsonMethod(){
+void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, int *iterations){
 
+    printf("Newton-Raphson Method\n");
+
+    menu(a, b, c, d, e, f, iterations);
 }
