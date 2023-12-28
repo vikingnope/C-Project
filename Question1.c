@@ -125,25 +125,12 @@ void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, long do
 
     long double tempX0 = *x0;
     int tempIterations = iterations;
-    int tempA = *a;
-    int tempB = *b;
-    int tempC = *c;
-    int tempD = *d;
-    int tempE = *e;
-    int tempF = *f;
 
     do {
         long double functionValue = functionWorkOut(a, b, c, d, e, f, x0);
         long double derivative = differentiation(a, b, c, d, e, x0);
 
         *x0 -= functionValue / derivative;
-
-        *a = tempA;
-        *b = tempB;
-        *c = tempC;
-        *d = tempD;
-        *e = tempE;
-        *f = tempF;
 
         iterations--;
 
