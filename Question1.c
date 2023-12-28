@@ -108,6 +108,13 @@ void menu(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int i
  */
 void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations){
 
+    if (iterations <= 0) {
+        printf("Cannot converge with 0 or negative iterations.\n");
+        printf("\n");
+        menu(a, b, c, d, e, f, x0, iterations);
+        return;
+    }
+
     long double x1;
 
     printf("Secant Method\n");
@@ -135,10 +142,16 @@ void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x
 
         iterations--;
 
+        if (isnan(*x0)){
+            printf("No root has been found.\n");
+            printf("\n");
+            menu(a, b, c, d, e, f, x0, iterations);
+            return;
+        }
+
     } while (iterations > 0);
 
     printf("The closest root after %d iterations is: %Lf\n", tempIterations, *x0);
-
     printf("\n");
 
     menu(a, b, c, d, e, f, &doubleReturnX0, tempIterations);
@@ -148,6 +161,12 @@ void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x
  * The following method is used to work out the Newton-Raphson method of the polynomial.
  */
 void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations){
+    if (iterations <= 0) {
+        printf("Cannot converge with 0 or negative iterations.\n");
+        printf("\n");
+        menu(a, b, c, d, e, f, x0, iterations);
+        return;
+    }
 
     printf("Newton-Raphson Method\n");
 
@@ -162,10 +181,15 @@ void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, long do
 
         iterations--;
 
+        if (isnan(*x0)){
+            printf("No root has been found.\n");
+            printf("\n");
+            menu(a, b, c, d, e, f, x0, iterations);
+            return;
+        }
     } while (iterations > 0);
 
     printf("The closest root after %d iterations is: %Lf\n", tempIterations, *x0);
-
     printf("\n");
 
     menu(a, b, c, d, e, f, &tempX0, tempIterations);
