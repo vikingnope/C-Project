@@ -4,8 +4,8 @@
 void menu(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations);
 void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations);
 void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations);
-long double differentiation(int *a, int *b, int *c, int *d, int *e, long double *x0);
-long double functionWorkOut(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0);
+long double differentiation(const int *a, const int *b, const int *c, const int *d, const int *e, const long double *x0);
+long double functionWorkOut(const int *a, const int *b, const int *c, const int *d, const int *e, const int *f, const long double *x0);
 
 int main() {
     int a, b, c, d, e, f;
@@ -198,7 +198,7 @@ void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, long do
 /**
  * The following method is used to work out the differentiation of the polynomial.
  */
-long double differentiation(int *a, int *b, int *c, int *d, int *e, long double *x0){
+long double differentiation(const int *a, const int *b, const int *c, const int *d, const int *e, const long double *x0){
 
     long double answer = 0;
 
@@ -214,7 +214,7 @@ long double differentiation(int *a, int *b, int *c, int *d, int *e, long double 
 /**
  * The following method is used to work out the work out the function at a given point.
  */
-long double functionWorkOut(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0){
+long double functionWorkOut(const int *a, const int *b, const int *c, const int *d, const int *e, const int *f, const long double *x0){
 
     long double answer = 0;
 
