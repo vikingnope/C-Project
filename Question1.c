@@ -2,15 +2,17 @@
 #include <math.h>
 
 void menu(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations);
-void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int *aPow, int *bPow, int *cPow, int *dPow, int *ePow, int *fPow, int iterations);
-void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int *aPow, int *bPow, int *cPow, int *dPow, int *ePow, int *fPow, int iterations);
-long double differentiation(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int *aPow, int *bPow, int *cPow, int *dPow, int *ePow, int *fPow);
-long double functionWorkOut(int *a, int *b, int *c, int *d, int *e, int *f, int *aPow, int *bPow, int *cPow, int *dPow, int *ePow, int *fPow, long double *x0);
+void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations);
+void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations);
+long double differentiation(int *a, int *b, int *c, int *d, int *e, long double *x0);
+long double functionWorkOut(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0);
 
 int main() {
     int a, b, c, d, e, f;
     int iterations;
     long double x0;
+
+    setbuf(stdout, 0);
 
     printf("Enter the polynomial in the format: Ax^5+Bx^4+Cx^3+Dx^2+Ex+F=0\n");
 
@@ -71,15 +73,8 @@ int main() {
 void menu(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations){
     int choice;
 
-    int aPow = 5;
-    int bPow = 4;
-    int cPow = 3;
-    int dPow = 2;
-    int ePow = 1;
-    int fPow = 0;
-
     printf("1. Secant Method\n");
-    printf("2. Newton-Raphson Method.\n");
+    printf("2. Newton-Raphson Method\n");
     printf("3. Quit\n");
     printf("Enter your choice: ");
 
@@ -94,10 +89,10 @@ void menu(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int i
 
     switch (choice){
         case 1:
-            secantMethod(a, b, c, d, e, f, x0, &aPow, &bPow, &cPow, &dPow, &ePow, &fPow, iterations);
+            secantMethod(a, b, c, d, e, f, x0, iterations);
             break;
         case 2:
-            newtonRaphsonMethod(a, b, c, d, e, f, x0, &aPow, &bPow, &cPow, &dPow, &ePow, &fPow, iterations);
+            newtonRaphsonMethod(a, b, c, d, e, f, x0, iterations);
             break;
         case 3:
             printf("Thank you for using this program.\n");
@@ -111,7 +106,7 @@ void menu(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int i
 /**
  * The following method is used to work out the Secant method of the polynomial.
  */
-void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int *aPow, int *bPow, int *cPow, int *dPow, int *ePow, int *fPow, int iterations){
+void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations){
 
     printf("Secant Method\n");
 
@@ -124,20 +119,37 @@ void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x
 /**
  * The following method is used to work out the Newton-Raphson method of the polynomial.
  */
-void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int *aPow, int *bPow, int *cPow, int *dPow, int *ePow, int *fPow, int iterations){
+void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations){
 
     printf("Newton-Raphson Method\n");
 
     long double tempX0 = *x0;
     int tempIterations = iterations;
+    int tempA = *a;
+    int tempB = *b;
+    int tempC = *c;
+    int tempD = *d;
+    int tempE = *e;
+    int tempF = *f;
 
     do {
-        *x0 -= (functionWorkOut(a, b, c, d, e, f, aPow, bPow, cPow, dPow, ePow, fPow, x0) / differentiation(a, b, c, d, e, f, x0, aPow, bPow, cPow, dPow, ePow, fPow));
+        long double functionValue = functionWorkOut(a, b, c, d, e, f, x0);
+        long double derivative = differentiation(a, b, c, d, e, x0);
+
+        *x0 -= functionValue / derivative;
+
+        *a = tempA;
+        *b = tempB;
+        *c = tempC;
+        *d = tempD;
+        *e = tempE;
+        *f = tempF;
+
         iterations--;
 
     } while (iterations > 0);
 
-    printf("The closest root is: %Lf\n", *x0);
+    printf("The closest root after %d iterations is: %Lf\n", tempIterations, *x0);
 
     printf("\n");
 
@@ -147,59 +159,32 @@ void newtonRaphsonMethod(int *a, int *b, int *c, int *d, int *e, int *f, long do
 /**
  * The following method is used to work out the differentiation of the polynomial.
  */
-long double differentiation(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int *aPow, int *bPow, int *cPow, int *dPow, int *ePow, int *fPow){
+long double differentiation(int *a, int *b, int *c, int *d, int *e, long double *x0){
 
-    printf("Differentiation\n");
+    long double answer = 0;
 
-    *aPow = 4;
-    *bPow = 3;
-    *cPow = 2;
-    *dPow = 1;
-    *ePow = 0;
-    *fPow = -1;
+    answer += *a * 5 * powl(*x0, 4);
+    answer += *b * 4 * powl(*x0, 3);
+    answer += *c * 3 * powl(*x0, 2);
+    answer += *d * 2 * (*x0);
+    answer += *e;
 
-    *f = 0;
-
-    return functionWorkOut(a, b, c, d, e, f, aPow, bPow, cPow, dPow, ePow, fPow, x0);
+    return answer;
 }
 
 /**
  * The following method is used to work out the work out the function at a given point.
  */
-long double functionWorkOut(int *a, int *b, int *c, int *d, int *e, int *f, int *aPow, int *bPow, int *cPow, int *dPow, int *ePow, int *fPow, long double *x0){
-    printf("Function Work Out\n");
+long double functionWorkOut(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0){
 
-    long double aWorkOut = 0;
-    long double bWorkOut = 0;
-    long double cWorkOut = 0;
-    long double dWorkOut = 0;
-    long double eWorkOut = 0;
-    long double fWorkOut = 0;
+    long double answer = 0;
 
-    if (*aPow >= 0){
-        aWorkOut = *a * powl(*x0, *aPow);
-    }
+    answer += *a * powl(*x0, 5);
+    answer += *b * powl(*x0, 4);
+    answer += *c * powl(*x0, 3);
+    answer += *d * powl(*x0, 2);
+    answer += *e * (*x0);
+    answer += *f;
 
-    if (*bPow >= 0){
-        bWorkOut = *b * powl(*x0, *bPow);
-    }
-
-    if (*cPow >= 0){
-        cWorkOut = *c * powl(*x0, *cPow);
-    }
-
-    if (*dPow >= 0){
-        dWorkOut = *d * powl(*x0, *dPow);
-    }
-
-    if (*ePow >= 0){
-        eWorkOut = *e * powl(*x0, *ePow);
-    }
-
-    if (*fPow >= 0){
-        fWorkOut = *f * powl(*x0, *fPow);
-    }
-
-    printf("The function work out is: %Lf\n", (aWorkOut + bWorkOut + cWorkOut + dWorkOut + eWorkOut + fWorkOut));
-    return (aWorkOut + bWorkOut + cWorkOut + dWorkOut + eWorkOut + fWorkOut);
+    return answer;
 }
