@@ -108,12 +108,40 @@ void menu(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int i
  */
 void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int iterations){
 
+    long double x1;
+
     printf("Secant Method\n");
+
+    printf("\n");
+
+    printf("Enter the value of x1: ");
+    scanf("%Lf", &x1);
+
+    printf("\n");
+
+    long double doubleReturnX0 = *x0;
 
     long double tempX0 = *x0;
     int tempIterations = iterations;
 
-    menu(a, b, c, d, e, f, &tempX0, tempIterations);
+    do {
+        long double functionValueX0 = functionWorkOut(a, b, c, d, e, f, x0);
+        long double functionValueX1 = functionWorkOut(a, b, c, d, e, f, &x1);
+
+        *x0 = x1 - (functionValueX1 * (x1 - *x0)) / (functionValueX1 - functionValueX0);
+
+        x1 = tempX0;
+        tempX0 = *x0;
+
+        iterations--;
+
+    } while (iterations > 0);
+
+    printf("The closest root after %d iterations is: %Lf\n", tempIterations, *x0);
+
+    printf("\n");
+
+    menu(a, b, c, d, e, f, &doubleReturnX0, tempIterations);
 }
 
 /**
