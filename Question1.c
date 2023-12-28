@@ -48,7 +48,7 @@ int main() {
 
     printf("\n");
 
-    printf("The polynomial is: %dx^5+%dx^4+%dx^3+%dx^2+%dx+%d=0\n", a, b, c, d, e, f);
+    printf("The polynomial is: f(x)=%dx^5+%dx^4+%dx^3+%dx^2+%dx+%d\n", a, b, c, d, e, f);
 
     printf("\n");
 
