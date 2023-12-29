@@ -19,32 +19,68 @@ int main() {
     printf("\n");
 
     printf("Enter a: ");
-    scanf("%d", &a);
+
+    while (scanf("%d", &a) != 1){
+        printf("\n");
+        printf("Please enter an integer.\n");
+        printf("Enter a: ");
+        while (getchar() != '\n');
+    }
 
     printf("\n");
 
     printf("Enter b: ");
-    scanf("%d", &b);
+
+    while (scanf("%d", &b) != 1){
+        printf("\n");
+        printf("Please enter an integer.\n");
+        printf("Enter b: ");
+        while (getchar() != '\n');
+    }
 
     printf("\n");
 
     printf("Enter c: ");
-    scanf("%d", &c);
+
+    while (scanf("%d", &c) != 1){
+        printf("\n");
+        printf("Please enter an integer.\n");
+        printf("Enter c: ");
+        while (getchar() != '\n');
+    }
 
     printf("\n");
 
     printf("Enter d: ");
-    scanf("%d", &d);
+
+    while (scanf("%d", &d) != 1){
+        printf("\n");
+        printf("Please enter an integer.\n");
+        printf("Enter d: ");
+        while (getchar() != '\n');
+    }
 
     printf("\n");
 
     printf("Enter e: ");
-    scanf("%d", &e);
+
+    while (scanf("%d", &e) != 1){
+        printf("\n");
+        printf("Please enter an integer.\n");
+        printf("Enter e: ");
+        while (getchar() != '\n');
+    }
 
     printf("\n");
 
     printf("Enter f: ");
-    scanf("%d", &f);
+
+    while (scanf("%d", &f) != 1){
+        printf("\n");
+        printf("Please enter an integer.\n");
+        printf("Enter f: ");
+        while (getchar() != '\n');
+    }
 
     printf("\n");
 
@@ -52,13 +88,25 @@ int main() {
 
     printf("\n");
 
-    printf("Enter the starting value of x0: ");
-    scanf("%Lf", &x0);
+    printf("Enter the value of x0: ");
+
+    while (scanf("%Lf", &x0) != 1){
+        printf("\n");
+        printf("Please enter any double value.\n");
+        printf("Enter the value of x0: ");
+        while (getchar() != '\n');
+    }
 
     printf("\n");
 
     printf("Enter number of iterations: ");
-    scanf("%d", &iterations);
+
+    while (scanf("%d", &iterations) != 1){
+        printf("\n");
+        printf("Please enter an integer.\n");
+        printf("Enter number of iterations: ");
+        while (getchar() != '\n');
+    }
 
     printf("\n");
 
@@ -95,7 +143,7 @@ void menu(int *a, int *b, int *c, int *d, int *e, int *f, long double *x0, int i
             newtonRaphsonMethod(a, b, c, d, e, f, x0, iterations);
             break;
         case 3:
-            printf("Thank you for using this program.\n");
+            printf("Thank you for using this program. Goodbye!\n");
             break;
         default:
             printf("Invalid choice from menu.\n");
@@ -122,7 +170,13 @@ void secantMethod(int *a, int *b, int *c, int *d, int *e, int *f, long double *x
     printf("\n");
 
     printf("Enter the value of x1: ");
-    scanf("%Lf", &x1);
+
+    while (scanf("%Lf", &x1) != 1){
+        printf("\n");
+        printf("Please enter any double value.\n");
+        printf("Enter a: ");
+        while (getchar() != '\n');
+    }
 
     printf("\n");
 
