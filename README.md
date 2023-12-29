@@ -10,7 +10,7 @@ The appropriate error handling was done to make sure that the program runs smoot
 
 ## How to run
 
-To run on Windows, kindly uncomment the lines 6 and 7 in the CMakeLists.txt file by removing the hashes in front:
+To run on Windows, kindly uncomment the lines 6 and 7 in the `CMakeLists.txt` file by removing the hashes in front:
 
 ```
 MATH(EXPR stack_size "16 * 1024 * 1024") # 16 Mb
