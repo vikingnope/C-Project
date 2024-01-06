@@ -1,0 +1,9 @@
+# Ignore all CMake build folders
+/Question 2/cmake-build-debug/
+/Question 1/cmake-build-debug/
+/cmake-build-debug/
+
+# Ignore all .idea folders
+/.idea/
+/Question 2/.idea/
+/Question 1/.idea/
