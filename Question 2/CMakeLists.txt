@@ -3,7 +3,7 @@ project("Assignment Question 2" C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Question_2A Question2A.c)
+add_executable(Question_2A Question2A.c SetMethodsA.c)
 add_executable(Question_2B Question2B.c)
 
 set(LIB_SOURCE_FILES
