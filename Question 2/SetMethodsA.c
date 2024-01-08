@@ -70,38 +70,58 @@ void displaySet(GenSet set) {
     printf("\n");
 }
 
-GenSet unionSet(GenSet set1, GenSet set2) {
-    GenSet unionSet;
-    initSet(&unionSet, set2.elementType);
+GenSet *unionSet(GenSet set1, GenSet set2) {
+    GenSet *unionSet = (GenSet*)malloc(sizeof(GenSet));
+
+    if (unionSet == NULL) {
+        printf("Memory allocation failed for result in intersectSet\n");
+        return NULL;
+    }
+
+    initSet(unionSet, set2.elementType);
+
     for (int i = 0; i < set1.size; ++i) {
-        addToSet(&unionSet, set1.elements[i]);
+        addToSet(unionSet, set1.elements[i]);
     }
     for (int i = 0; i < set2.size; ++i) {
-        addToSet(&unionSet, set2.elements[i]);
+        addToSet(unionSet, set2.elements[i]);
     }
     return unionSet;
 }
 
-GenSet intersectSet(GenSet set1, GenSet set2) {
-    GenSet result;
-    initSet(&result, set1.elementType);
+GenSet *intersectSet(GenSet set1, GenSet set2) {
+    GenSet *result = (GenSet*)malloc(sizeof(GenSet));
+
+    if (result == NULL) {
+        printf("Memory allocation failed for result in intersectSet\n");
+        return NULL;
+    }
+
+    initSet(result, set1.elementType);
 
     for (int i = 0; i < set1.size; ++i) {
         if (isSubsetSet(set2, set1.elements[i])) {
-            addToSet(&result, set1.elements[i]);
+            addToSet(result, set1.elements[i]);
         }
     }
 
-    if (countSet(result) == 0) {
+    if (countSet(*result) == 0) {
         printf("No intersection found.");
     }
 
     return result;
 }
 
-GenSet diffSet(GenSet set1, GenSet set2) {
-    GenSet diffSet;
-    initSet(&diffSet, set1.elementType);
+GenSet *diffSet(GenSet set1, GenSet set2) {
+    GenSet *diffSet = (GenSet*)malloc(sizeof(GenSet));
+
+    if (diffSet == NULL) {
+        printf("Memory allocation failed for result in intersectSet\n");
+        return NULL;
+    }
+
+    initSet(diffSet, set1.elementType);
+
     for (int i = 0; i < set1.size; ++i) {
         int isFound = 0;
         for (int j = 0; j < set2.size; ++j) {
@@ -118,7 +138,7 @@ GenSet diffSet(GenSet set1, GenSet set2) {
             }
         }
         if (!isFound) {
-            addToSet(&diffSet, set1.elements[i]);
+            addToSet(diffSet, set1.elements[i]);
         }
     }
     return diffSet;
