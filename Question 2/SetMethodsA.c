@@ -34,7 +34,6 @@ int addToSet(GenSet *set, void *element) {
         } else {
             printf("Element '%d' already exists in set.\n", *(int *)(element));
         }
-        printf("\n");
         return 0;
     } else if (set->elementType == 0) { // Integer type
         int *newElement = (int *)malloc(sizeof(int));

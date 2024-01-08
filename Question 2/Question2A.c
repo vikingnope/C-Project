@@ -2,7 +2,46 @@
 #include "setMethodsA.h"
 #include <string.h>
 
+void userDefinedSets();
+void predefinedSets();
+
 int main() {
+    int mainChoice;
+
+    printf("Welcome to the Set Operations Program!\n");
+
+    do {
+        printf("\n1.Enter your own sets");
+        printf("\n2.Use the predefined sets");
+        printf("\n3.Exit");
+        printf("\n\nEnter your choice: ");
+        scanf("%d", &mainChoice);
+        while (getchar() != '\n'); // Clear input buffer
+
+        switch (mainChoice) {
+            case 1:
+                printf("\n");
+                userDefinedSets();
+                break;
+            case 2:
+                printf("\n");
+                predefinedSets();
+                break;
+            case 3:
+                break;
+            default:
+                printf("\nInvalid choice. Please try again.\n");
+                break;
+        }
+    }while(mainChoice != 3);
+
+    printf("\nThank you for using this program. Goodbye!\n");
+
+    return 0;
+}
+
+
+void userDefinedSets(){
     GenSet intSet, stringSet;
     initSet(&intSet, 0); // Integer set
     initSet(&stringSet, 1); // String set
@@ -145,8 +184,65 @@ int main() {
 
     deinitSet(&intSet);
     deinitSet(&stringSet);
+}
 
-    printf("\nThank you for using this program. Goodbye!\n");
+void predefinedSets(){
+    GenSet intSet, stringSet, intStringUnion, intStringIntersect, intStringDiff, stringSet2, stringSetIntersection, intSet2, intSetIntersection;
+    initSet(&intSet, 0); // Integer set
+    initSet(&stringSet, 1); // String set
+    initSet(&stringSet2, 1); // String set
+    initSet(&intSet2, 0); // Integer set
 
-    return 0;
+    // Adding elements to integer set
+    addToSet(&intSet, &(int){10});
+    addToSet(&intSet, &(int){20});
+    addToSet(&intSet, &(int){30});
+    addToSet(&intSet, &(int){40});
+
+    // Adding of elements to integer set 2
+    addToSet(&intSet2, &(int){10});
+
+    // Adding elements to string set
+   addToSet(&stringSet, "apple");
+    addToSet(&stringSet, "orange");
+    addToSet(&stringSet, "banana");
+    addToSet(&stringSet, "apple"); // Duplicate element
+
+    // Adding elements to string set 2
+    addToSet(&stringSet2, "apple");
+
+    printf("\nInteger Set:\n");
+    displaySet(intSet);
+    printf("\nString Set:\n");
+    displaySet(stringSet);
+
+    printf("\nCount of elements in Integer Set: %d", countSet(intSet));
+    printf("\nCount of elements in String Set: %d", countSet(stringSet));
+
+    printf("\n\nChecking if Integer Set is empty: %s", isEmptySet(intSet) ? "Yes" : "No");
+    printf("\nChecking if String Set is empty: %s", isEmptySet(stringSet) ? "Yes" : "No");
+
+    printf("\n\nIs 20 a subset of Integer Set: %s", isSubsetSet(intSet, &(int){20}) ? "Yes" : "No");
+    printf("\nIs 'apple' a subset of String Set: %s", isSubsetSet(stringSet, "apple") ? "Yes" : "No");
+    printf("\nIs 'kiwi' a subset of String Set: %s", isSubsetSet(stringSet, "kiwi") ? "Yes" : "No");
+
+    printf("\n\nUnion of Integer Set and String Set: ");
+    intStringUnion = unionSet(intSet, stringSet);
+    displaySet(intStringUnion);
+
+    printf("\nIntersection of Integer Set and String Set: ");
+    intStringIntersect = intersectSet(intSet, stringSet);
+    displaySet(intStringIntersect);
+
+    printf("\nIntersection of String Set and String Set 2: ");
+    stringSetIntersection = intersectSet(stringSet, stringSet2);
+    displaySet(stringSetIntersection);
+
+    printf("\nIntersection of Int Set and Int Set 2: ");
+    intSetIntersection = intersectSet(intSet, intSet2);
+    displaySet(intSetIntersection);
+
+    printf("\nDifference between Integer Set and String Set: ");
+    intStringDiff = diffSet(intSet, stringSet);
+    displaySet(intStringDiff);
 }
