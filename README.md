@@ -20,3 +20,20 @@ set(CMAKE_EXE_LINKER_FLAGS "-Wl,--stack,${stack_size}")
 On other operating systems, the stack size is already set to 16 Mb.
 
 In CLion reload the CMake project, then select `Question_1` in the configurations tab at the top right and run the program.
+
+# Question 2    
+
+## Description
+
+In question 2 the program is designed to create a set with the ability to add, unionise sets,
+intersect sets, find the symmetric difference between sets, check if a set is a subset of another set, check if a set is a proper subset of another set,
+check if a set is empty, check if a set is equal to another set, check if a set is disjoint
+from another set.
+
+## How to run
+
+### Question 2A
+In CLion reload the CMake project, then select `Question_2A` in the configurations tab at the top right and run the program.
+
+### Question 2B
+In CLion reload the CMake project, then select `Question_2B` in the configurations tab at the top right and run the program.
