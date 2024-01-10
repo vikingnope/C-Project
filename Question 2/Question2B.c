@@ -8,6 +8,9 @@ void predefinedSets();
 int main() {
     int mainChoice;
 
+    // Clears buffer in cases where terminal does not output anything
+    setbuf(stdout, 0);
+
     printf("Welcome to the Set Operations Program!\n");
 
     do {
@@ -88,42 +91,42 @@ void userDefinedSets(){
                 break;
             case 3:
                 printf("\nInteger Set:\n");
-                displaySet(intSet);
+                displaySet(&intSet);
                 break;
             case 4:
                 printf("\nString Set:\n");
-                displaySet(stringSet);
+                displaySet(&stringSet);
                 break;
             case 5:
-                printf("\nCount of elements in Integer Set: %d", countSet(intSet));
+                printf("\nCount of elements in Integer Set: %d", countSet(&intSet));
                 break;
             case 6:
-                printf("\nCount of elements in String Set: %d", countSet(stringSet));
+                printf("\nCount of elements in String Set: %d", countSet(&stringSet));
                 break;
             case 7:
-                printf("\nInteger set is empty: %s", isEmptySet(intSet) ? "Yes" : "No");
+                printf("\nInteger set is empty: %s", isEmptySet(&intSet) ? "Yes" : "No");
                 break;
             case 8:
-                printf("\nString set is empty: %s", isEmptySet(stringSet) ? "Yes" : "No");
+                printf("\nString set is empty: %s", isEmptySet(&stringSet) ? "Yes" : "No");
                 break;
             case 9:
-                printf("\nIs integer set a subset of another integer set: %s", isSubsetSet(intSet, &intElement) ? "Yes" : "No");
+                printf("\nIs integer set a subset of another integer set: %s", isSubsetSet(&intSet, &intElement) ? "Yes" : "No");
                 break;
             case 10:
-                printf("\nIs string set a subset of another string set: %s", isSubsetSet(stringSet, stringElement) ? "Yes" : "No");
+                printf("\nIs string set a subset of another string set: %s", isSubsetSet(&stringSet, stringElement) ? "Yes" : "No");
                 break;
             case 11:
-                printf("\nIs integer set a subset of another string set: %s", isSubsetSet(stringSet, &intElement) ? "Yes" : "No");
+                printf("\nIs integer set a subset of another string set: %s", isSubsetSet(&stringSet, &intElement) ? "Yes" : "No");
                 break;
             case 12:
-                printf("\nIs string set a subset of another integer set: %s", isSubsetSet(intSet, stringElement) ? "Yes" : "No");
+                printf("\nIs string set a subset of another integer set: %s", isSubsetSet(&intSet, stringElement) ? "Yes" : "No");
                 break;
             case 13:
                 printf("\nUnion of Integer Set and String Set: ");
-                GenSet *unionResult = unionSet(intSet, stringSet);
+                GenSet *unionResult = unionSet(&intSet, &stringSet);
 
                 if (unionResult != NULL) {
-                    displaySet(*unionResult);
+                    displaySet(unionResult);
                     deinitSet(unionResult);
                 } else {
                     printf("Error getting unionSet result. Exiting.\n");
@@ -133,10 +136,10 @@ void userDefinedSets(){
             case 14:
                 printf("\nIntersection of Integer Set and String Set: ");
 
-                GenSet *intersectResult = intersectSet(intSet, stringSet);
+                GenSet *intersectResult = intersectSet(&intSet, &stringSet);
 
                 if(intersectResult != NULL) {
-                    displaySet(*intersectResult);
+                    displaySet(intersectResult);
                     deinitSet(intersectResult);
                 } else {
                     printf("Error getting intersectSet result. Exiting.\n");
@@ -146,10 +149,10 @@ void userDefinedSets(){
             case 15:
                 printf("\nDifference between Integer Set and String Set: ");
 
-                GenSet *diffResult = diffSet(intSet, stringSet);
+                GenSet *diffResult = diffSet(&intSet, &stringSet);
 
                 if(diffResult != NULL) {
-                    displaySet(*diffResult);
+                    displaySet(diffResult);
                     deinitSet(diffResult);
                 } else {
                     printf("Error getting diffSet result. Exiting.\n");
@@ -158,9 +161,9 @@ void userDefinedSets(){
                 break;
             case 16:
                 printf("\nExporting Integer Set to file...\n");
-                export(intSet, "intSet.txt");
+                export(&intSet, "intSet.txt", 0);
                 printf("\nExporting String Set to file...\n");
-                export(stringSet, "stringSet.txt");
+                export(&stringSet, "stringSet.txt", 0);
                 break;
             case 17:
                 break;
@@ -176,6 +179,31 @@ void userDefinedSets(){
 
 void predefinedSets(){
     GenSet intSet, stringSet, stringSet2, intSet2;
+
+    char *filenameInt = "intSet.txt";
+    char *filenameString = "stringSet.txt";
+    char *filenameSets = "setOfSets.txt";
+
+
+    if (remove(filenameInt) == 0) {
+        printf("%s file deleted successfully.\n", filenameInt);
+    } else {
+        printf("Unable to delete the file: %s\n", filenameInt);
+    }
+
+
+    if (remove(filenameString) == 0) {
+        printf("%s file deleted successfully.\n", filenameString);
+    } else {
+        printf("Unable to delete the file: %s\n", filenameString);
+    }
+
+    if (remove(filenameSets) == 0) {
+        printf("%s file deleted successfully.\n", filenameSets);
+    } else {
+        printf("Unable to delete the file: %s\n", filenameSets);
+    }
+
     initSet(&intSet, 0); // Integer set
     initSet(&stringSet, 1); // String set
     initSet(&stringSet2, 1); // String set
@@ -199,73 +227,87 @@ void predefinedSets(){
     // Adding elements to string set 2
     addToSet(&stringSet2, "apple");
 
+    GenSet setOfSets;
+    initSet(&setOfSets, 2);
+
+    addToSet(&setOfSets, &intSet);
+    addToSet(&setOfSets, &stringSet);
+    addToSet(&setOfSets, &stringSet2);
+    addToSet(&setOfSets, &intSet2);
+
     printf("\nInteger Set:\n");
-    displaySet(intSet);
+    displaySet(&intSet);
     printf("\nString Set:\n");
-    displaySet(stringSet);
+    displaySet(&stringSet);
+    printf("\nSet of Sets:\n");
+    displaySet(&setOfSets);
 
-    printf("\nCount of elements in Integer Set: %d", countSet(intSet));
-    printf("\nCount of elements in String Set: %d", countSet(stringSet));
+    printf("\nCount of elements in Integer Set: %d", countSet(&intSet));
+    printf("\nCount of elements in String Set: %d", countSet(&stringSet));
+    printf("\nCount of elements in Set of Sets: %d", countSet(&setOfSets));
 
-    printf("\n\nChecking if Integer Set is empty: %s", isEmptySet(intSet) ? "Yes" : "No");
-    printf("\nChecking if String Set is empty: %s", isEmptySet(stringSet) ? "Yes" : "No");
+    printf("\n\nChecking if Integer Set is empty: %s", isEmptySet(&intSet) ? "Yes" : "No");
+    printf("\nChecking if String Set is empty: %s", isEmptySet(&stringSet) ? "Yes" : "No");
+    printf("\nChecking if Set of Sets is empty: %s", isEmptySet(&setOfSets) ? "Yes" : "No");
 
-    printf("\n\nIs 20 a subset of Integer Set: %s", isSubsetSet(intSet, &(int){20}) ? "Yes" : "No");
-    printf("\nIs 'apple' a subset of String Set: %s", isSubsetSet(stringSet, "apple") ? "Yes" : "No");
-    printf("\nIs 'kiwi' a subset of String Set: %s", isSubsetSet(stringSet, "kiwi") ? "Yes" : "No");
+    printf("\n\nIs 20 a subset of Integer Set: %s", isSubsetSet(&intSet, &(int){20}) ? "Yes" : "No");
+    printf("\nIs 'apple' a subset of String Set: %s", isSubsetSet(&stringSet, "apple") ? "Yes" : "No");
+    printf("\nIs 'kiwi' a subset of String Set: %s", isSubsetSet(&stringSet, "kiwi") ? "Yes" : "No");
 
     printf("\n\nUnion of Integer Set and String Set: ");
-    GenSet *intStringUnion = unionSet(intSet, stringSet);
+    GenSet *intStringUnion = unionSet(&intSet, &stringSet);
 
     if(intStringUnion != NULL) {
-        displaySet(*intStringUnion);
+        displaySet(intStringUnion);
         deinitSet(intStringUnion);
     } else {
         printf("Error getting unionSet result. Exiting.\n");
     }
 
     printf("\nIntersection of Integer Set and String Set: ");
-    GenSet *intStringIntersect = intersectSet(intSet, stringSet);
+    GenSet *intStringIntersect = intersectSet(&intSet, &stringSet);
 
     if(intStringIntersect != NULL) {
-        displaySet(*intStringIntersect);
+        displaySet(intStringIntersect);
         deinitSet(intStringIntersect);
     } else {
         printf("Error getting intersectSet result. Exiting.\n");
     }
 
     printf("\nIntersection of String Set and String Set 2: ");
-    GenSet *stringSetIntersection = intersectSet(stringSet, stringSet2);
+    GenSet *stringSetIntersection = intersectSet(&stringSet, &stringSet2);
 
     if(stringSetIntersection != NULL) {
-        displaySet(*stringSetIntersection);
+        displaySet(stringSetIntersection);
         deinitSet(stringSetIntersection);
     } else {
         printf("Error getting intersectSet result. Exiting.\n");
     }
 
     printf("\nIntersection of Int Set and Int Set 2: ");
-    GenSet *intSetIntersection = intersectSet(intSet, intSet2);
+    GenSet *intSetIntersection = intersectSet(&intSet, &intSet2);
 
     if(intSetIntersection != NULL) {
-        displaySet(*intSetIntersection);
+        displaySet(intSetIntersection);
         deinitSet(intSetIntersection);
     } else {
         printf("Error getting intersectSet result. Exiting.\n");
     }
 
     printf("\nDifference between Integer Set and String Set: ");
-    GenSet *intStringDiff = diffSet(intSet, stringSet);
+    GenSet *intStringDiff = diffSet(&intSet, &stringSet);
 
     if(intStringDiff != NULL) {
-        displaySet(*intStringDiff);
+        displaySet(intStringDiff);
         deinitSet(intStringDiff);
     } else {
         printf("Error getting diffSet result. Exiting.\n");
     }
 
     printf("\nExporting Integer Set to file...\n");
-    export(intSet, "intSet.txt");
+    export(&intSet, filenameInt, 0);
     printf("\nExporting String Set to file...\n");
-    export(stringSet, "stringSet.txt");
+    export(&stringSet, filenameString, 0);
+    printf("\nExporting Set of Sets to file...\n");
+    export(&setOfSets, filenameSets, 1);
 }
