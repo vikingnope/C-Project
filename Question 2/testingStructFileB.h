@@ -33,6 +33,12 @@ int comparePlanes(void *element1, void *element2){
     Planes *plane1 = (Planes *)element1;
     Planes *plane2 = (Planes *)element2;
 
+    if (plane1->name > plane2->name){
+        return 1;
+    } else if (plane1->name < plane2->name){
+        return -1;
+    }
+
     if (plane1->capacity > plane2->capacity){
         return 1;
     } else if (plane1->capacity < plane2->capacity){
@@ -46,6 +52,12 @@ int comparePlanes(void *element1, void *element2){
 int comparePlanets(void *element1, void *element2){
     Planets *planet1 = (Planets *)element1;
     Planets *planet2 = (Planets *)element2;
+
+    if (planet1->name > planet2->name){
+        return 1;
+    } else if (planet1->name < planet2->name){
+        return -1;
+    }
 
     if (planet1->circumference > planet2->circumference){
         return 1;

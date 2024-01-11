@@ -17,7 +17,7 @@ int main() {
     GenSet *planeSet1 = ((GenSet *) malloc(sizeof(GenSet)));
 
     // Initialises set with the following parameters:
-    initSet(planeSet1,2, 20, &getSizeOfPlanes, &comparePlanes, &addPlanesToSet, &displayPlanes, &exportPlanes);
+    initSet(planeSet1,1, 20, &getSizeOfPlanes, &comparePlanes, &addPlanesToSet, &displayPlanes, &exportPlanes);
 
     // Adds the following elements to the set:
     addToSet(planeSet1, &(Planes){"Boeing 747", 416});
@@ -31,7 +31,7 @@ int main() {
     GenSet *planetSet1 = ((GenSet *) malloc(sizeof(GenSet)));
 
     // Initialises set with the following parameters:
-    initSet(planetSet1,3, 20, &getSizeOfPlanets, &comparePlanets, &addPlanetsToSet, &displayPlanets, &exportPlanets);
+    initSet(planetSet1,2, 20, &getSizeOfPlanets, &comparePlanets, &addPlanetsToSet, &displayPlanets, &exportPlanets);
 
     // Adds the following elements to the set:
     addToSet(planetSet1, &(Planets){"Earth", 40075});
@@ -47,6 +47,7 @@ int main() {
     if (unionSet1 != NULL) {
         printf("\nUnion of Plane Set and Planet Set:\n");
         displaySet(unionSet1);
+        deinitSet(unionSet1); // Deinitialises the set
     }
 
     // Performs intersection
@@ -56,6 +57,7 @@ int main() {
     if (intersectSet1 != NULL) {
         printf("\nIntersection of Plane Set and Planet Set:\n");
         displaySet(intersectSet1);
+        deinitSet(intersectSet1); // Deinitialises the set
     }
 
     // Performs difference
@@ -65,6 +67,7 @@ int main() {
     if (diffSet1 != NULL) {
         printf("\nDifference of Plane Set and Planet Set:\n");
         displaySet(diffSet1);
+        deinitSet(diffSet1); // Deinitialises the set
     }
 
     // Counts the number of elements in the plane set
@@ -96,18 +99,6 @@ int main() {
     export(planetSet1, "planetSet.txt");
 
     // Deinitialises the sets
-    if(unionSet1 != NULL) {
-        deinitSet(unionSet1);
-    }
-
-    if(intersectSet1 != NULL) {
-        deinitSet(intersectSet1);
-    }
-
-    if(diffSet1 != NULL) {
-        deinitSet(diffSet1);
-    }
-
     deinitSet(planeSet1);
     deinitSet(planetSet1);
 
