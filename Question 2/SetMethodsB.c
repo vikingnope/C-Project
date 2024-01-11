@@ -64,10 +64,12 @@ int addToSet(GenSet *set, void *element) {
         return 0;
     } else {
 
-        if(isalpha(*((char *)(element)))) {
-            printf("Element '%s' added to set\n", (char *)element);
-        } else {
-            printf("Element '%d' added to set\n", *(int *)(element));
+        if (set->elementType == 1 || set->elementType == 2) {
+            if (isalpha(*((char *) (element)))) {
+                printf("Element '%s' added to set\n", (char *) element);
+            } else {
+                printf("Element '%d' added to set\n", *(int *) (element));
+            }
         }
     }
 
@@ -92,7 +94,7 @@ void displaySet(GenSet *set) {
 GenSet *unionSet(GenSet *set1, GenSet *set2) {
     // Check if the sets have different element types
     if (set1->elementType != set2->elementType) {
-        printf("Error: The sets have different element types\n");
+        printf("Error in Union: The sets have different element types\n");
         return NULL; // Return NULL if the sets have different element types
     }
 
@@ -103,7 +105,7 @@ GenSet *unionSet(GenSet *set1, GenSet *set2) {
         return NULL;
     }
 
-    initSet(result, set1->elementType, set1->memorySize + set2->memorySize, set1->FunctionPointers.getSizeOfFP, set1->FunctionPointers.compareFP, set1->FunctionPointers.addToSetFP, set1->FunctionPointers.displayFP, set1->FunctionPointers.exportFP);
+    initSet(result, 3, set1->memorySize + set2->memorySize, set1->FunctionPointers.getSizeOfFP, set1->FunctionPointers.compareFP, set1->FunctionPointers.addToSetFP, set1->FunctionPointers.displayFP, set1->FunctionPointers.exportFP);
 
     for (int i = 0; i < set1->usedSize; i++) {
         addToSet(result, &((char *)set1->elements)[i * (*set1->FunctionPointers.getSizeOfFP)()]);
@@ -122,7 +124,7 @@ GenSet *unionSet(GenSet *set1, GenSet *set2) {
 GenSet *intersectSet(GenSet *set1, GenSet *set2) {
     // Check if the sets have different element types
     if (set1->elementType != set2->elementType) {
-        printf("Error: The sets have different element types\n");
+        printf("Error in Intersection: The sets have different element types\n");
         return NULL; // Return NULL if the sets have different element types
     }
 
@@ -133,7 +135,7 @@ GenSet *intersectSet(GenSet *set1, GenSet *set2) {
         return NULL;
     }
 
-    initSet(result, set1->elementType, set1->memorySize, set1->FunctionPointers.getSizeOfFP, set1->FunctionPointers.compareFP, set1->FunctionPointers.addToSetFP, set1->FunctionPointers.displayFP, set1->FunctionPointers.exportFP);
+    initSet(result, 4, set1->memorySize, set1->FunctionPointers.getSizeOfFP, set1->FunctionPointers.compareFP, set1->FunctionPointers.addToSetFP, set1->FunctionPointers.displayFP, set1->FunctionPointers.exportFP);
 
     for (int i = 0; i < set1->usedSize; i++) {
         for (int j = 0; j < set2->usedSize; j++) {
@@ -152,7 +154,7 @@ GenSet *intersectSet(GenSet *set1, GenSet *set2) {
 GenSet *diffSet(GenSet *set1, GenSet *set2) {
     // Check if the sets have different element types
     if (set1->elementType != set2->elementType) {
-        printf("Error: The sets have different element types\n");
+        printf("Error in Difference: The sets have different element types\n");
         return NULL; // Return NULL if the sets have different element types
     }
 
@@ -163,7 +165,7 @@ GenSet *diffSet(GenSet *set1, GenSet *set2) {
         return NULL;
     }
 
-    initSet(result, set1->elementType, set1->memorySize, set1->FunctionPointers.getSizeOfFP, set1->FunctionPointers.compareFP, set1->FunctionPointers.addToSetFP, set1->FunctionPointers.displayFP, set1->FunctionPointers.exportFP);
+    initSet(result, 5, set1->memorySize, set1->FunctionPointers.getSizeOfFP, set1->FunctionPointers.compareFP, set1->FunctionPointers.addToSetFP, set1->FunctionPointers.displayFP, set1->FunctionPointers.exportFP);
 
     for (int i = 0; i < set1->usedSize; i++) {
         int found = 0;

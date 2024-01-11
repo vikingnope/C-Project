@@ -53,7 +53,9 @@ int addFriendNamesToSet(void *element1, void *element2){
     FriendNames *friendName1 = (FriendNames *)element1;
     FriendNames *friendName2 = (FriendNames *)element2;
 
-    return strcmp(friendName1->name, friendName2->name);
+    strcpy(friendName1->name, friendName2->name);
+
+    return 1;
 }
 
 // Adds FriendNumbers sets to the set
@@ -61,13 +63,9 @@ int addFriendNumbersToSet(void *element1, void *element2){
     FriendNumbers *friendNumber1 = (FriendNumbers *)element1;
     FriendNumbers *friendNumber2 = (FriendNumbers *)element2;
 
-    if (friendNumber1->number > friendNumber2->number){
-        return 1;
-    } else if (friendNumber1->number < friendNumber2->number){
-        return -1;
-    } else {
-        return 0;
-    }
+    friendNumber1->number = friendNumber2->number;
+
+    return 1;
 }
 
 // Displays FriendNames sets
