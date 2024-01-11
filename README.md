@@ -35,7 +35,5 @@ from another set.
 ### Question 2A
 In CLion reload the CMake project, then select `Question_2A` in the configurations tab at the top right and run the program.
 
-#### NOTE: In `Question_2A` the program is designed to take both user-defined sets and pre-defined sets. To use the pre-defined sets, just select number 2 in the menu.
-
 ### Question 2B
 In CLion reload the CMake project, then select `Question_2B` in the configurations tab at the top right and run the program.
