@@ -71,6 +71,12 @@ void displaySet(GenSet set) {
 }
 
 GenSet *unionSet(GenSet set1, GenSet set2) {
+    // Check if sets are of the same type
+    if (set1.elementType != set2.elementType) {
+        printf("\nCannot perform union on sets of different types.\n");
+        return NULL;
+    }
+
     GenSet *unionSet = (GenSet*)malloc(sizeof(GenSet));
 
     if (unionSet == NULL) {
@@ -90,6 +96,12 @@ GenSet *unionSet(GenSet set1, GenSet set2) {
 }
 
 GenSet *intersectSet(GenSet set1, GenSet set2) {
+    // Check if sets are of the same type
+    if (set1.elementType != set2.elementType) {
+        printf("Cannot perform union on sets of different types.\n");
+        return NULL;
+    }
+
     GenSet *result = (GenSet*)malloc(sizeof(GenSet));
 
     if (result == NULL) {
@@ -113,6 +125,12 @@ GenSet *intersectSet(GenSet set1, GenSet set2) {
 }
 
 GenSet *diffSet(GenSet set1, GenSet set2) {
+    // Check if sets are of the same type
+    if (set1.elementType != set2.elementType) {
+        printf("Cannot perform union on sets of different types.\n");
+        return NULL;
+    }
+
     GenSet *diffSet = (GenSet*)malloc(sizeof(GenSet));
 
     if (diffSet == NULL) {

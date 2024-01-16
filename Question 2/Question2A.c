@@ -163,10 +163,12 @@ void userDefinedSets(){
                 printf("\nIs string set a subset of another integer set: %s", isSubsetSet(intSet, stringElement) ? "Yes" : "No");
                 break;
             case 11:
-                printf("\nUnion of Integer Set and String Set: ");
+                printf("\n");
+
                 GenSet *unionResult = unionSet(intSet, stringSet);
 
                 if (unionResult != NULL) {
+                    printf("\nUnion of Integer Set and String Set: ");
                     displaySet(*unionResult);
                     deinitSet(unionResult);
                 } else {
@@ -175,11 +177,12 @@ void userDefinedSets(){
 
                 break;
             case 12:
-                printf("\nIntersection of Integer Set and String Set: ");
+                printf("\n");
 
                 GenSet *intersectResult = intersectSet(intSet, stringSet);
 
                 if(intersectResult != NULL) {
+                    printf("\nIntersection of Integer Set and String Set: ");
                     displaySet(*intersectResult);
                     deinitSet(intersectResult);
                 } else {
@@ -188,11 +191,12 @@ void userDefinedSets(){
 
                 break;
             case 13:
-                printf("\nDifference between Integer Set and String Set: ");
+                printf("\n");
 
                 GenSet *diffResult = diffSet(intSet, stringSet);
 
                 if(diffResult != NULL) {
+                    printf("\nDifference between Integer Set and String Set: ");
                     displaySet(*diffResult);
                     deinitSet(diffResult);
                 } else {
