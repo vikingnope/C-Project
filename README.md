@@ -21,7 +21,6 @@ Assignment
 │   ├── SetMethodsB.c - Contains all the function needed for Question 2B
 │   ├── SetMethodsA.h - Contains all the function prototypes for Question 2A
 │   ├── SetMethodsB.h - Contains all the function prototypes for Question 2B
-│   ├── testingStructFileA.h - Contains the struct needed for Question 2A
 │   ├── testingStructFileB.h - Contains the struct needed for Question 2B
 │
 ├── Documentation
