@@ -8,22 +8,27 @@
 The project is structured as follows:
 
 ```
-Question_1
-├── CMakeLists.txt
-├── Question_1.c - Contains all the code needed to run Question 1
-```
-
-```
-Question_2
-├── CMakeLists.txt
-├── Question_2A.c - Contains the main method for Question 2A
-├── Question_2B.c - Contains the main method for Question 2B
-├── SetMethodsA.c - Contains all the function needed for Question 2A
-├── SetMethodsB.c - Contains all the function needed for Question 2B
-├── SetMethodsA.h - Contains all the function prototypes for Question 2A
-├── SetMethodsB.h - Contains all the function prototypes for Question 2B
-├── testingStructFileA.h - Contains the struct needed for Question 2A
-├── testingStructFileB.h - Contains the struct needed for Question 2B
+Assignment
+├── Question 1
+│   ├── CMakeLists.txt
+│   ├── Question_1.c - Contains all the code needed to run Question 1
+│
+├── Question 2
+│   ├── CMakeLists.txt
+│   ├── Question_2A.c - Contains the main method for Question 2A
+│   ├── Question_2B.c - Contains the main method for Question 2B
+│   ├── SetMethodsA.c - Contains all the function needed for Question 2A
+│   ├── SetMethodsB.c - Contains all the function needed for Question 2B
+│   ├── SetMethodsA.h - Contains all the function prototypes for Question 2A
+│   ├── SetMethodsB.h - Contains all the function prototypes for Question 2B
+│   ├── testingStructFileA.h - Contains the struct needed for Question 2A
+│   ├── testingStructFileB.h - Contains the struct needed for Question 2B
+│
+├── Documentation
+│   ├── CPS1011 Assignment Documentation.docx - Contains the documentation for the project in docx format for Word
+│   ├── CPS1011 Assignment Documentation.pdf - Contains the documentation for the project in pdf format
+│
+│.gitignore - Contains the files that are to be ignored by git
 ```
 
 ## Description
