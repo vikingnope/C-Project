@@ -16,8 +16,11 @@ void initSet(GenSet *set, int elementType) {
 }
 
 void deinitSet(GenSet *set) {
-    free(set->elements); // free elements
-    free(set); // free the set
+    for (int i = 0; i < set->size; ++i) {
+        free(set->elements[i]); // Free each element
+    }
+    free(set->elements); // Free the array of elements
+    free(set); // Free the set
 }
 
 int addToSet(GenSet *set, void *element) {
