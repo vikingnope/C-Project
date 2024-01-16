@@ -2,22 +2,24 @@
 #include "setMethodsA.h"
 #include <string.h>
 
-void userDefinedSets();
-void predefinedSets();
+void userDefinedSets(); // User defined sets
+void predefinedSets(); // Predefined sets
 
 int main() {
     int mainChoice;
 
     printf("Welcome to the Set Operations Program!\n");
 
+    // Menu
     do {
         printf("\n1.Enter your own sets");
         printf("\n2.Use the predefined sets");
         printf("\n3.Exit");
         printf("\n\nEnter your choice: ");
-        scanf("%d", &mainChoice);
+        scanf("%d", &mainChoice); // Get user input
         while (getchar() != '\n'); // Clear input buffer
 
+        // Switch case for main menu
         switch (mainChoice) {
             case 1:
                 printf("\n");
@@ -53,8 +55,9 @@ void userDefinedSets(){
     printf("Adding elements to the Integer Set:\n");
     printf("Enter integers (press Enter without typing anything to stop): ");
 
+    // While loop to get user input
     while (1) {
-        char line[MAX_SET_SIZE]; // Adjust the size according to your needs
+        char line[MAX_SET_SIZE];
         if (!fgets(line, sizeof(line), stdin)) {
             // Error reading input
             printf("Error reading input. Exiting.\n");
@@ -81,6 +84,7 @@ void userDefinedSets(){
 
     printf("\nAdding elements to the String Set:\n");
     printf("Enter strings (press 'Enter' to stop): ");
+    // While loop to get user input
     while (1) {
         if (!fgets(stringElement, sizeof(stringElement), stdin)) {
             // Error reading input
@@ -109,6 +113,7 @@ void userDefinedSets(){
     printf("\nString Set:\n");
     displaySet(stringSet);
 
+    // Menu
     do{
         printf("\n\nMenu:");
         printf("\n1. Display integer set");
@@ -126,8 +131,12 @@ void userDefinedSets(){
         printf("\n13. Difference between integer set and string set");
         printf("\n14. Exit");
         printf("\n\nEnter your choice: ");
-        scanf("%d", &choice);
-        while (getchar() != '\n'); // Clear input buffer
+
+        while (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\n");
+            printf("\n\nEnter your choice: ");
+            while (getchar() != '\n'); // Clear input buffer
+        }
 
         switch(choice){
             case 1:
@@ -139,27 +148,52 @@ void userDefinedSets(){
                 displaySet(stringSet);
                 break;
             case 3:
-                printf("\nCount of elements in Integer Set: %d", countSet(intSet));
+                printf("\nCount of elements in Integer Set: %d", countSet(intSet)); // Count of elements in integer set
                 break;
             case 4:
-                printf("\nCount of elements in String Set: %d", countSet(stringSet));
+                printf("\nCount of elements in String Set: %d", countSet(stringSet)); // Count of elements in string set
                 break;
             case 5:
-                printf("\nInteger set is empty: %s", isEmptySet(intSet) ? "Yes" : "No");
+                printf("\nInteger set is empty: %s", isEmptySet(intSet) ? "Yes" : "No"); // Check if integer set is empty
                 break;
             case 6:
-                printf("\nString set is empty: %s", isEmptySet(stringSet) ? "Yes" : "No");
+                printf("\nString set is empty: %s", isEmptySet(stringSet) ? "Yes" : "No"); // Check if string set is empty
                 break;
             case 7:
-                printf("\nIs integer set a subset of another integer set: %s", isSubsetSet(intSet, &intElement) ? "Yes" : "No");
+                printf("\nEnter an integer: ");
+
+                while (scanf("%d", &intElement) != 1) {
+                    printf("Invalid input. Please enter an integer.\n");
+                    printf("\nEnter an integer: ");
+                    while (getchar() != '\n'); // Clear input buffer
+                }
+                printf("\nIs integer set a subset of another integer set: %s", isSubsetSet(intSet, &intElement) ? "Yes" : "No"); // Check if integer set is a subset of another integer set
                 break;
             case 8:
-                printf("\nIs string set a subset of another string set: %s", isSubsetSet(stringSet, stringElement) ? "Yes" : "No");
+                printf("\nEnter a string: ");
+                while (scanf("%s", stringElement) != 1) {
+                    printf("Invalid input. Please enter a string.\n");
+                    printf("\nEnter a string: ");
+                    while (getchar() != '\n'); // Clear input buffer
+                }
+                printf("\nIs string set a subset of another string set: %s", isSubsetSet(stringSet, stringElement) ? "Yes" : "No"); // Check if string set is a subset of another string set
                 break;
             case 9:
+                printf("\nEnter an integer: ");
+                while (scanf("%d", &intElement) != 1) {
+                    printf("Invalid input. Please enter an integer.\n");
+                    printf("\nEnter an integer: ");
+                    while (getchar() != '\n'); // Clear input buffer
+                }
                 printf("\nIs integer set a subset of another string set: %s", isSubsetSet(stringSet, &intElement) ? "Yes" : "No");
                 break;
             case 10:
+                printf("\nEnter a string: ");
+                while (scanf("%s", stringElement) != 1) {
+                    printf("Invalid input. Please enter a string.\n");
+                    printf("\nEnter a string: ");
+                    while (getchar() != '\n'); // Clear input buffer
+                }
                 printf("\nIs string set a subset of another integer set: %s", isSubsetSet(intSet, stringElement) ? "Yes" : "No");
                 break;
             case 11:
