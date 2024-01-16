@@ -192,8 +192,8 @@ void userDefinedSets(){
         printf("\n9. Check if integer element is a subset of the integer set");
         printf("\n10. Check if string element is a subset of the string set");
         printf("\n11. Union of integer set and integer set 2");
-        printf("\n12. Intersection of string set and string set2");
-        printf("\n13. Difference between integer set and integer set2");
+        printf("\n12. Intersection of string set and string set 2");
+        printf("\n13. Difference between integer set and integer set 2");
         printf("\n14. Exit");
         printf("\n\nEnter your choice: ");
 
