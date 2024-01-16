@@ -185,7 +185,7 @@ void userDefinedSets(){
                     printf("\nEnter an integer: ");
                     while (getchar() != '\n'); // Clear input buffer
                 }
-                printf("\nIs integer set a subset of another string set: %s", isSubsetSet(stringSet, &intElement) ? "Yes" : "No");
+                printf("\nIs integer set a subset of another string set: %s", isSubsetSet(stringSet, &intElement) ? "Yes" : "No"); // Check if integer set is a subset of another string set
                 break;
             case 10:
                 printf("\nEnter a string: ");
@@ -194,13 +194,14 @@ void userDefinedSets(){
                     printf("\nEnter a string: ");
                     while (getchar() != '\n'); // Clear input buffer
                 }
-                printf("\nIs string set a subset of another integer set: %s", isSubsetSet(intSet, stringElement) ? "Yes" : "No");
+                printf("\nIs string set a subset of another integer set: %s", isSubsetSet(intSet, stringElement) ? "Yes" : "No"); // Check if string set is a subset of another integer set
                 break;
             case 11:
                 printf("\n");
 
-                GenSet *unionResult = unionSet(intSet, stringSet);
+                GenSet *unionResult = unionSet(intSet, stringSet); // Get union of integer set and string set
 
+                // Check if result is NULL
                 if (unionResult != NULL) {
                     printf("\nUnion of Integer Set and String Set: ");
                     displaySet(*unionResult);
@@ -213,8 +214,9 @@ void userDefinedSets(){
             case 12:
                 printf("\n");
 
-                GenSet *intersectResult = intersectSet(intSet, stringSet);
+                GenSet *intersectResult = intersectSet(intSet, stringSet); // Get intersection of integer set and string set
 
+                // Check if result is NULL
                 if(intersectResult != NULL) {
                     printf("\nIntersection of Integer Set and String Set: ");
                     displaySet(*intersectResult);
@@ -227,8 +229,9 @@ void userDefinedSets(){
             case 13:
                 printf("\n");
 
-                GenSet *diffResult = diffSet(intSet, stringSet);
+                GenSet *diffResult = diffSet(intSet, stringSet); // Get difference between integer set and string set
 
+                // Check if result is NULL
                 if(diffResult != NULL) {
                     printf("\nDifference between Integer Set and String Set: ");
                     displaySet(*diffResult);
@@ -246,8 +249,8 @@ void userDefinedSets(){
         }
     } while (choice != 14);
 
-    deinitSet(&intSet);
-    deinitSet(&stringSet);
+    deinitSet(&intSet); // Deinitialize integer set
+    deinitSet(&stringSet); // Deinitialize string set
 }
 
 void predefinedSets(){
@@ -280,19 +283,20 @@ void predefinedSets(){
     printf("\nString Set:\n");
     displaySet(stringSet);
 
-    printf("\nCount of elements in Integer Set: %d", countSet(intSet));
-    printf("\nCount of elements in String Set: %d", countSet(stringSet));
+    printf("\nCount of elements in Integer Set: %d", countSet(intSet)); // Count of elements in integer set
+    printf("\nCount of elements in String Set: %d", countSet(stringSet)); // Count of elements in string set
 
-    printf("\n\nChecking if Integer Set is empty: %s", isEmptySet(intSet) ? "Yes" : "No");
-    printf("\nChecking if String Set is empty: %s", isEmptySet(stringSet) ? "Yes" : "No");
+    printf("\n\nChecking if Integer Set is empty: %s", isEmptySet(intSet) ? "Yes" : "No"); // Check if integer set is empty
+    printf("\nChecking if String Set is empty: %s", isEmptySet(stringSet) ? "Yes" : "No"); // Check if string set is empty
 
-    printf("\n\nIs 20 a subset of Integer Set: %s", isSubsetSet(intSet, &(int){20}) ? "Yes" : "No");
-    printf("\nIs 'apple' a subset of String Set: %s", isSubsetSet(stringSet, "apple") ? "Yes" : "No");
-    printf("\nIs 'kiwi' a subset of String Set: %s", isSubsetSet(stringSet, "kiwi") ? "Yes" : "No");
+    printf("\n\nIs 20 a subset of Integer Set: %s", isSubsetSet(intSet, &(int){20}) ? "Yes" : "No"); // Check if 20 is a subset of integer set
+    printf("\nIs 'apple' a subset of String Set: %s", isSubsetSet(stringSet, "apple") ? "Yes" : "No"); // Check if 'apple' is a subset of string set
+    printf("\nIs 'kiwi' a subset of String Set: %s", isSubsetSet(stringSet, "kiwi") ? "Yes" : "No"); // Check if 'kiwi' is a subset of string set
 
     printf("\n\nUnion of Integer Set and String Set: ");
-    GenSet *intStringUnion = unionSet(intSet, stringSet);
+    GenSet *intStringUnion = unionSet(intSet, stringSet); // Get union of integer set and string set
 
+    // Check if result is NULL
     if(intStringUnion != NULL) {
         displaySet(*intStringUnion);
         deinitSet(intStringUnion);
@@ -301,8 +305,9 @@ void predefinedSets(){
     }
 
     printf("\nIntersection of Integer Set and String Set: ");
-    GenSet *intStringIntersect = intersectSet(intSet, stringSet);
+    GenSet *intStringIntersect = intersectSet(intSet, stringSet); // Get intersection of integer set and string set
 
+    // Check if result is NULL
     if(intStringIntersect != NULL) {
         displaySet(*intStringIntersect);
         deinitSet(intStringIntersect);
@@ -311,8 +316,9 @@ void predefinedSets(){
     }
 
     printf("\nIntersection of String Set and String Set 2: ");
-    GenSet *stringSetIntersection = intersectSet(stringSet, stringSet2);
+    GenSet *stringSetIntersection = intersectSet(stringSet, stringSet2); // Get intersection of string set and string set 2
 
+    // Check if result is NULL
     if(stringSetIntersection != NULL) {
         displaySet(*stringSetIntersection);
         deinitSet(stringSetIntersection);
@@ -321,8 +327,9 @@ void predefinedSets(){
     }
 
     printf("\nIntersection of Int Set and Int Set 2: ");
-    GenSet *intSetIntersection = intersectSet(intSet, intSet2);
+    GenSet *intSetIntersection = intersectSet(intSet, intSet2); // Get intersection of integer set and integer set 2
 
+    // Check if result is NULL
     if(intSetIntersection != NULL) {
         displaySet(*intSetIntersection);
         deinitSet(intSetIntersection);
@@ -331,8 +338,9 @@ void predefinedSets(){
     }
 
     printf("\nDifference between Integer Set and String Set: ");
-    GenSet *intStringDiff = diffSet(intSet, stringSet);
+    GenSet *intStringDiff = diffSet(intSet, stringSet); // Get difference between integer set and string set
 
+    // Check if result is NULL
     if(intStringDiff != NULL) {
         displaySet(*intStringDiff);
         deinitSet(intStringDiff);
