@@ -28,8 +28,8 @@ void initSet(GenSet *set, int elementType, int initSize, getSizeOfFP getSizeOfFP
   * This function deinitialises the set
  */
 void deinitSet(GenSet *set) {
-    free(set->elements); // elements is a void pointer
-    free(set); // set is a GenSet pointer
+    free(set->elements); // free elements
+    free(set); // free the set
 }
 
 /**
