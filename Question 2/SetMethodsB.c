@@ -193,13 +193,12 @@ int countSet(GenSet *set) {
 /**
   * This function checks if the element is a subset of the set
  */
-void *isSubsetSet(GenSet *set1, void *element) {
-    for (int i = 0; i < set1->usedSize; i++) {
-        if ((*set1->FunctionPointers.compareFP)(&((char *)set1->elements)[i * (*set1->FunctionPointers.getSizeOfFP)()], element) == 0) {
-            return &((char *)set1->elements)[i * (*set1->FunctionPointers.getSizeOfFP)()];
+void *isSubsetSet(GenSet *set, void *element) {
+    for (int i = 0; i < set->usedSize; i++) {
+        if ((*set->FunctionPointers.compareFP)(&((char *)set->elements)[i * (*set->FunctionPointers.getSizeOfFP)()], element) == 1) {
+            return &((char *)set->elements)[i * (*set->FunctionPointers.getSizeOfFP)()];
         }
     }
-
     return NULL;
 }
 

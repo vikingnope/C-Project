@@ -94,6 +94,8 @@ int main() {
     if (planet != NULL) {
         printf("\nPlanet found in Planet Set:\n");
         displayPlanets(planet);
+    } else {
+        printf("\n'Earth' not found in Planet Set\n");
     }
 
     // Checks if the plane set is empty
