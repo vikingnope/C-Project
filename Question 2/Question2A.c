@@ -229,7 +229,7 @@ void predefinedSets(){
     addToSet(&intSet2, &(int){10});
 
     // Adding elements to string set
-   addToSet(&stringSet, "apple");
+    addToSet(&stringSet, "apple");
     addToSet(&stringSet, "orange");
     addToSet(&stringSet, "banana");
     addToSet(&stringSet, "apple"); // Duplicate element
