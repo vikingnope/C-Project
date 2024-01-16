@@ -61,6 +61,7 @@ int addToSet(GenSet *set, void *element) {
 
 void displaySet(GenSet set) {
     for (int i = 0; i < set.size; ++i) {
+        // Check if element is of type string
         if(isalpha(*((char *)(set.elements[i])))) {
             printf("%s ", (char *)(set.elements[i]));
         } else {
