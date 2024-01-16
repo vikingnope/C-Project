@@ -3,6 +3,29 @@
 
 # Question 1  
 
+## Project Structure
+
+The project is structured as follows:
+
+```
+Question_1
+├── CMakeLists.txt
+├── Question_1.c - Contains all the code needed to run Question 1
+```
+
+```
+Question_2
+├── CMakeLists.txt
+├── Question_2A.c - Contains the main method for Question 2A
+├── Question_2B.c - Contains the main method for Question 2B
+├── SetMethodsA.c - Contaiins all the function needed for Question 2A
+├── SetMethodsB.c - Contaiins all the function needed for Question 2B
+├── SetMethodsA.h - Contains all the function prototypes for Question 2A
+├── SetMethodsB.h - Contains all the function prototypes for Question 2B
+├── testingStructFileA.h - Contains the struct needed for Question 2A
+├── testingStructFileB.h - Contains the struct needed for Question 2B
+```
+
 ## Description
 
 In question 1 the program implements the Secant Method and the Newton-Raphson Method to find the closest root of a function. 
