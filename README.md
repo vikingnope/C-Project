@@ -11,7 +11,7 @@ The project is structured as follows:
 Assignment
 ├── Question 1
 │   ├── CMakeLists.txt
-│   ├── Question_1.c - Contains all the code needed to run Question 1
+│   ├── Question1.c - Contains all the code needed to run Question 1
 │
 ├── Question 2
 │   ├── CMakeLists.txt
