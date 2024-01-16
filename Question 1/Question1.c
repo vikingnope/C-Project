@@ -17,7 +17,7 @@ int main() {
     int iterations;
     long double x0;
 
-    // Clears buffer in cases where terminal does not output anything
+    // Clears buffer in cases for when terminal does not output anything
     setbuf(stdout, 0);
 
     printf("Enter the polynomial in the format: Ax^5+Bx^4+Cx^3+Dx^2+Ex+F=0\n");
