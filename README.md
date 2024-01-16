@@ -18,8 +18,8 @@ Assignment
 │   ├── Question_2A.c - Contains the main method for Question 2A
 │   ├── Question_2B.c - Contains the main method for Question 2B
 │   ├── SetMethodsA.c - Contains all the function needed for Question 2A
-│   ├── SetMethodsB.c - Contains all the function needed for Question 2B
 │   ├── SetMethodsA.h - Contains all the function prototypes for Question 2A
+│   ├── SetMethodsB.c - Contains all the function needed for Question 2B
 │   ├── SetMethodsB.h - Contains all the function prototypes for Question 2B
 │   ├── testingStructFileB.h - Contains the struct needed for Question 2B
 │
