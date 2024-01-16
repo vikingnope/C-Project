@@ -16,8 +16,12 @@ int main() {
         printf("\n2.Use the predefined sets");
         printf("\n3.Exit");
         printf("\n\nEnter your choice: ");
-        scanf("%d", &mainChoice); // Get user input
-        while (getchar() != '\n'); // Clear input buffer
+
+        while (scanf("%d", &mainChoice) != 1) {
+            printf("Invalid input. Please enter an integer.\n");
+            printf("\n\nEnter your choice: ");
+            while (getchar() != '\n'); // Clear input buffer
+        }
 
         // Switch case for main menu
         switch (mainChoice) {
