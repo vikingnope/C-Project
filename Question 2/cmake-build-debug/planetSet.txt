@@ -1,0 +1,8 @@
+Planet Set:
+
+1.	Name: Earth
+	Circumference: 40075
+
+2.	Name: Jupiter
+	Circumference: 439264
+

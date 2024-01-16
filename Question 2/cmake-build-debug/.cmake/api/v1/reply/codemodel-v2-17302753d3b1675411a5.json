@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Assignment Question 2",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "GenSetLibA::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GenSetLibA-Debug-eb11d1042d8704d54963.json",
+					"name" : "GenSetLibA",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "GenSetLibB::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GenSetLibB-Debug-61e7234ffacc70fb7a3d.json",
+					"name" : "GenSetLibB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Question_2A::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Question_2A-Debug-4d58ffe22c73a9b4c03f.json",
+					"name" : "Question_2A",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Question_2B::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Question_2B-Debug-05eea24d8d690cfdb878.json",
+					"name" : "Question_2B",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/aidsc/OneDrive/UM - Computing Science and Mathematics/Computing Science/CPS1011/C projects/Assignment/Question 2/cmake-build-debug",
+		"source" : "C:/Users/aidsc/OneDrive/UM - Computing Science and Mathematics/Computing Science/CPS1011/C projects/Assignment/Question 2"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
