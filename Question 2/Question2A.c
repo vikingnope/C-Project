@@ -1,149 +1,304 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "setMethodsA.h"
-#include "testingStructFileA.h"
+#include <string.h>
+
+void userDefinedSets();
+void predefinedSets();
 
 int main() {
-    // Removes files from previous runs
+    int mainChoice;
 
-    // Clears buffer in cases where terminal does not output anything
-    setbuf(stdout, 0);
+    printf("Welcome to the Set Operations Program!\n");
 
-    printf("Welcome to the Set Operations Program!\n\n");
+    do {
+        printf("\n1.Enter your own sets");
+        printf("\n2.Use the predefined sets");
+        printf("\n3.Exit");
+        printf("\n\nEnter your choice: ");
+        scanf("%d", &mainChoice);
+        while (getchar() != '\n'); // Clear input buffer
 
-    // Initialises the set
-    GenSet *nameSet1 = ((GenSet *) malloc(sizeof(GenSet)));
-    initSet(nameSet1, 1, 5, &getSizeOfFriendNames, &compareFriendNames, &addFriendNamesToSet, &displayFriendNames);
-
-    // Adds elements to the set
-    addToSet(nameSet1, &(FriendNames){"John"});
-    addToSet(nameSet1, &(FriendNames){"Mary"});
-    addToSet(nameSet1, &(FriendNames){"Peter"});
-
-    // Displays the set
-    printf("\nThe name set 1 contains:\n");
-    displaySet(nameSet1);
-
-    // Initialises the set
-    GenSet *numberSet = ((GenSet *) malloc(sizeof(GenSet)));
-    initSet(numberSet, 2, 5, &getSizeOfFriendNumbers, &compareFriendNumbers, &addFriendNumbersToSet, &displayFriendNumbers);
-
-    addToSet(numberSet, &(FriendNumbers){123});
-    addToSet(numberSet, &(FriendNumbers){456});
-    addToSet(numberSet, &(FriendNumbers){789});
-
-    // Displays the set
-    printf("\nThe number set contains:\n");
-    displaySet(numberSet);
-
-    GenSet *nameSet2 = ((GenSet *) malloc(sizeof(GenSet)));
-    initSet(nameSet2, 1, 5, &getSizeOfFriendNames, &compareFriendNames, &addFriendNamesToSet, &displayFriendNames);
-
-    // Adds elements to the set
-    addToSet(nameSet2, &(FriendNames){"Aiden"});
-    addToSet(nameSet2, &(FriendNames){"Kate"});
-    addToSet(nameSet2, &(FriendNames){"Liam"});
-
-    // Displays the set
-    printf("\nThe name set 2 contains:\n");
-    displaySet(nameSet2);
-
-    GenSet *nameSet3 = ((GenSet *) malloc(sizeof(GenSet)));
-    initSet(nameSet3, 1, 5, &getSizeOfFriendNames, &compareFriendNames, &addFriendNamesToSet, &displayFriendNames);
-
-    // Union of nameSet1 and nameSet2
-    GenSet *unionSetNamesResult = unionSet(nameSet1, nameSet2);
-
-    if (unionSetNamesResult != NULL) {
-        printf("\nThe union of nameSet1 and nameSet2 contains:\n");
-        displaySet(unionSetNamesResult);
-        deinitSet(unionSetNamesResult);
-    }
-
-    // Union of nameSet1 and numberSet
-    GenSet *unionSetNamesNumbersResult = unionSet(nameSet1, numberSet);
-
-    if (unionSetNamesNumbersResult != NULL) {
-        printf("\nThe union of nameSet1 and numberSet contains:\n");
-        displaySet(unionSetNamesNumbersResult);
-        deinitSet(unionSetNamesNumbersResult);
-    }
-
-    // Intersection of nameSet1 and nameSet2
-    GenSet *intersectionSetNamesResult = intersectSet(nameSet1, nameSet2);
-
-    if (intersectionSetNamesResult != NULL) {
-        printf("\nThe intersection of nameSet1 and nameSet2 contains:\n");
-        displaySet(intersectionSetNamesResult);
-        deinitSet(intersectionSetNamesResult);
-    }
-
-    // Intersection of nameSet1 and numberSet
-    GenSet *intersectionSetNamesNumbersResult = intersectSet(nameSet1, numberSet);
-
-    if (intersectionSetNamesNumbersResult != NULL) {
-        printf("\nThe intersection of nameSet1 and numberSet contains:\n");
-        displaySet(intersectionSetNamesNumbersResult);
-        deinitSet(intersectionSetNamesNumbersResult);
-    }
-
-    // Difference of nameSet1 and nameSet2
-    GenSet *differenceSetNamesResult = diffSet(nameSet1, nameSet2);
-
-    if (differenceSetNamesResult != NULL) {
-        printf("\nThe difference of nameSet1 and nameSet2 contains:\n");
-        displaySet(differenceSetNamesResult);
-        deinitSet(differenceSetNamesResult);
-    }
-
-    // Difference of nameSet1 and numberSet
-    GenSet *differenceSetNamesNumbersResult = diffSet(nameSet1, numberSet);
-
-    if (differenceSetNamesNumbersResult != NULL) {
-        printf("\nThe difference of nameSet1 and numberSet contains:\n");
-        displaySet(differenceSetNamesNumbersResult);
-        deinitSet(differenceSetNamesNumbersResult);
-    }
-
-    // Is subset of nameSet1
-    GenSet *isSubsetSetNamesResult = isSubsetSet(nameSet1, &(FriendNames){"John"});
-
-    if (isSubsetSetNamesResult != NULL) {
-        printf("\nThe element John is a subset of nameSet1\n");
-    } else {
-        printf("\nThe element John is not a subset of nameSet1\n");
-    }
-
-    // Is empty set nameSet1
-    int isEmptySetResult = isEmptySet(nameSet1);
-
-    if (isEmptySetResult != 1) {
-        printf("\nThe set 'nameSet1' is not empty\n");
-    } else {
-        printf("\nThe set 'nameSet1' is empty\n");
-    }
-
-    // Is empty set nameSet3
-    isEmptySetResult = isEmptySet(nameSet3);
-
-    if (isEmptySetResult != 1) {
-        printf("\nThe set 'nameSet3' is not empty\n");
-    } else {
-        printf("\nThe set 'nameSet3' is empty\n");
-    }
-
-    // Counts the number of elements in the set
-    int countSetResult = countSet(nameSet1);
-
-    printf("\nThe number of elements in the set 'nameSet1' is %d\n", countSetResult);
-
-    // Deinitialises the set
-    deinitSet(nameSet1);
-    deinitSet(numberSet);
-    deinitSet(nameSet2);
-    deinitSet(nameSet3);
+        switch (mainChoice) {
+            case 1:
+                printf("\n");
+                userDefinedSets();
+                break;
+            case 2:
+                printf("\n");
+                predefinedSets();
+                break;
+            case 3:
+                break;
+            default:
+                printf("\nInvalid choice. Please try again.\n");
+                break;
+        }
+    }while(mainChoice != 3);
 
     printf("\nThank you for using this program. Goodbye!\n");
 
     return 0;
+}
+
+
+void userDefinedSets(){
+    GenSet intSet, stringSet;
+    initSet(&intSet, 0); // Integer set
+    initSet(&stringSet, 1); // String set
+
+    int intElement;
+    int choice;
+    char stringElement[MAX_STRING_LENGTH];
+
+    printf("Adding elements to the Integer Set:\n");
+    printf("Enter integers (press Enter without typing anything to stop): ");
+
+    while (1) {
+        char line[MAX_SET_SIZE]; // Adjust the size according to your needs
+        if (!fgets(line, sizeof(line), stdin)) {
+            // Error reading input
+            printf("Error reading input. Exiting.\n");
+            break;
+        }
+
+        // Remove the trailing newline character, if present
+        line[strcspn(line, "\n")] = '\0';
+
+        if (line[0] == '\0') {
+            // Stop loop if the user presses Enter without typing anything
+            break;
+        }
+
+        // Convert the input to an integer
+        if (sscanf(line, "%d", &intElement) != 1) {
+            printf("Invalid input. Please enter an integer.\n");
+            continue; // Skip adding to the set if input is not an integer
+        }
+
+        addToSet(&intSet, &intElement);
+    }
+
+
+    printf("\nAdding elements to the String Set:\n");
+    printf("Enter strings (press 'Enter' to stop): ");
+    while (1) {
+        if (!fgets(stringElement, sizeof(stringElement), stdin)) {
+            // Error reading input
+            printf("Error reading input. Exiting.\n");
+            break;
+        }
+
+        // Remove the trailing newline character, if present
+        stringElement[strcspn(stringElement, "\n")] = '\0';
+
+        if (stringElement[0] == '\0') {
+            // Stop loop if the user presses Enter without typing anything
+            break;
+        }
+
+        addToSet(&stringSet, stringElement);
+
+        // Check for end-of-file
+        if (feof(stdin)) {
+            break;
+        }
+    }
+
+    printf("\nInteger Set:\n");
+    displaySet(intSet);
+    printf("\nString Set:\n");
+    displaySet(stringSet);
+
+    do{
+        printf("\n\nMenu:");
+        printf("\n1. Display integer set");
+        printf("\n2. Display string set");
+        printf("\n3. Count integer set");
+        printf("\n4. Count string set");
+        printf("\n5. Check if integer set is empty");
+        printf("\n6. Check if string set is empty");
+        printf("\n7. Check if integer set is a subset of another integer set");
+        printf("\n8. Check if string set is a subset of another string set");
+        printf("\n9. Check if integer set is a subset of another string set");
+        printf("\n10. Check if string set is a subset of another integer set");
+        printf("\n11. Union of integer set and string set");
+        printf("\n12. Intersection of integer set and string set");
+        printf("\n13. Difference between integer set and string set");
+        printf("\n14. Exit");
+        printf("\n\nEnter your choice: ");
+        scanf("%d", &choice);
+        while (getchar() != '\n'); // Clear input buffer
+
+        switch(choice){
+            case 1:
+                printf("\nInteger Set:\n");
+                displaySet(intSet);
+                break;
+            case 2:
+                printf("\nString Set:\n");
+                displaySet(stringSet);
+                break;
+            case 3:
+                printf("\nCount of elements in Integer Set: %d", countSet(intSet));
+                break;
+            case 4:
+                printf("\nCount of elements in String Set: %d", countSet(stringSet));
+                break;
+            case 5:
+                printf("\nInteger set is empty: %s", isEmptySet(intSet) ? "Yes" : "No");
+                break;
+            case 6:
+                printf("\nString set is empty: %s", isEmptySet(stringSet) ? "Yes" : "No");
+                break;
+            case 7:
+                printf("\nIs integer set a subset of another integer set: %s", isSubsetSet(intSet, &intElement) ? "Yes" : "No");
+                break;
+            case 8:
+                printf("\nIs string set a subset of another string set: %s", isSubsetSet(stringSet, stringElement) ? "Yes" : "No");
+                break;
+            case 9:
+                printf("\nIs integer set a subset of another string set: %s", isSubsetSet(stringSet, &intElement) ? "Yes" : "No");
+                break;
+            case 10:
+                printf("\nIs string set a subset of another integer set: %s", isSubsetSet(intSet, stringElement) ? "Yes" : "No");
+                break;
+            case 11:
+                printf("\nUnion of Integer Set and String Set: ");
+                GenSet *unionResult = unionSet(intSet, stringSet);
+
+                if (unionResult != NULL) {
+                    displaySet(*unionResult);
+                    deinitSet(unionResult);
+                } else {
+                    printf("Error getting unionSet result. Exiting.\n");
+                }
+
+                break;
+            case 12:
+                printf("\nIntersection of Integer Set and String Set: ");
+
+                GenSet *intersectResult = intersectSet(intSet, stringSet);
+
+                if(intersectResult != NULL) {
+                    displaySet(*intersectResult);
+                    deinitSet(intersectResult);
+                } else {
+                    printf("Error getting intersectSet result. Exiting.\n");
+                }
+
+                break;
+            case 13:
+                printf("\nDifference between Integer Set and String Set: ");
+
+                GenSet *diffResult = diffSet(intSet, stringSet);
+
+                if(diffResult != NULL) {
+                    displaySet(*diffResult);
+                    deinitSet(diffResult);
+                } else {
+                    printf("Error getting diffSet result. Exiting.\n");
+                }
+
+                break;
+            case 14:
+                break;
+            default:
+                printf("\nInvalid choice. Please try again.");
+                break;
+        }
+    } while (choice != 14);
+
+    deinitSet(&intSet);
+    deinitSet(&stringSet);
+}
+
+void predefinedSets(){
+    GenSet intSet, stringSet, stringSet2, intSet2;
+    initSet(&intSet, 0); // Integer set
+    initSet(&stringSet, 1); // String set
+    initSet(&stringSet2, 1); // String set
+    initSet(&intSet2, 0); // Integer set
+
+    // Adding elements to integer set
+    addToSet(&intSet, &(int){10});
+    addToSet(&intSet, &(int){20});
+    addToSet(&intSet, &(int){30});
+    addToSet(&intSet, &(int){40});
+
+    // Adding of elements to integer set 2
+    addToSet(&intSet2, &(int){10});
+
+    // Adding elements to string set
+   addToSet(&stringSet, "apple");
+    addToSet(&stringSet, "orange");
+    addToSet(&stringSet, "banana");
+    addToSet(&stringSet, "apple"); // Duplicate element
+
+    // Adding elements to string set 2
+    addToSet(&stringSet2, "apple");
+
+    printf("\nInteger Set:\n");
+    displaySet(intSet);
+    printf("\nString Set:\n");
+    displaySet(stringSet);
+
+    printf("\nCount of elements in Integer Set: %d", countSet(intSet));
+    printf("\nCount of elements in String Set: %d", countSet(stringSet));
+
+    printf("\n\nChecking if Integer Set is empty: %s", isEmptySet(intSet) ? "Yes" : "No");
+    printf("\nChecking if String Set is empty: %s", isEmptySet(stringSet) ? "Yes" : "No");
+
+    printf("\n\nIs 20 a subset of Integer Set: %s", isSubsetSet(intSet, &(int){20}) ? "Yes" : "No");
+    printf("\nIs 'apple' a subset of String Set: %s", isSubsetSet(stringSet, "apple") ? "Yes" : "No");
+    printf("\nIs 'kiwi' a subset of String Set: %s", isSubsetSet(stringSet, "kiwi") ? "Yes" : "No");
+
+    printf("\n\nUnion of Integer Set and String Set: ");
+    GenSet *intStringUnion = unionSet(intSet, stringSet);
+
+    if(intStringUnion != NULL) {
+        displaySet(*intStringUnion);
+        deinitSet(intStringUnion);
+    } else {
+        printf("Error getting unionSet result. Exiting.\n");
+    }
+
+    printf("\nIntersection of Integer Set and String Set: ");
+    GenSet *intStringIntersect = intersectSet(intSet, stringSet);
+
+    if(intStringIntersect != NULL) {
+        displaySet(*intStringIntersect);
+        deinitSet(intStringIntersect);
+    } else {
+        printf("Error getting intersectSet result. Exiting.\n");
+    }
+
+    printf("\nIntersection of String Set and String Set 2: ");
+    GenSet *stringSetIntersection = intersectSet(stringSet, stringSet2);
+
+    if(stringSetIntersection != NULL) {
+        displaySet(*stringSetIntersection);
+        deinitSet(stringSetIntersection);
+    } else {
+        printf("Error getting intersectSet result. Exiting.\n");
+    }
+
+    printf("\nIntersection of Int Set and Int Set 2: ");
+    GenSet *intSetIntersection = intersectSet(intSet, intSet2);
+
+    if(intSetIntersection != NULL) {
+        displaySet(*intSetIntersection);
+        deinitSet(intSetIntersection);
+    } else {
+        printf("Error getting intersectSet result. Exiting.\n");
+    }
+
+    printf("\nDifference between Integer Set and String Set: ");
+    GenSet *intStringDiff = diffSet(intSet, stringSet);
+
+    if(intStringDiff != NULL) {
+        displaySet(*intStringDiff);
+        deinitSet(intStringDiff);
+    } else {
+        printf("Error getting diffSet result. Exiting.\n");
+    }
 }
