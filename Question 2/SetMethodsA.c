@@ -23,10 +23,10 @@ void initSet(GenSet *set, int elementType) {
  */
 void deinitSet(GenSet *set) {
     for (int i = 0; i < set->size; ++i) {
-        free(set->elements[i]); // Free each element
+        free(set->elements[i]); // Free the memory allocated for each element
     }
-    free(set->elements); // Free the array of elements
-    free(set); // Free the set
+    free(set->elements); // Free the memory allocated for the array of elements
+    set->size = 0;
 }
 
 /**

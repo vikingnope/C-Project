@@ -262,7 +262,7 @@ void userDefinedSets(){
                     displaySet(*unionResult);
                     deinitSet(unionResult);
                 } else {
-                    printf("Error getting unionSet result. Exiting.\n");
+                    printf("Error getting unionSet result.\n");
                 }
 
                 break;
@@ -277,7 +277,7 @@ void userDefinedSets(){
                     displaySet(*intersectResult);
                     deinitSet(intersectResult);
                 } else {
-                    printf("Error getting intersectSet result. Exiting.\n");
+                    printf("Error getting intersectSet result.\n");
                 }
 
                 break;
@@ -292,7 +292,7 @@ void userDefinedSets(){
                     displaySet(*diffResult);
                     deinitSet(diffResult);
                 } else {
-                    printf("Error getting diffSet result. Exiting.\n");
+                    printf("Error getting diffSet result.\n");
                 }
 
                 break;
@@ -348,6 +348,8 @@ void predefinedSets(){
     printf("\nIs 'apple' a subset of String Set: %s", isSubsetSet(stringSet, "apple") ? "Yes" : "No"); // Check if 'apple' is a subset of string set
     printf("\nIs 'kiwi' a subset of String Set: %s", isSubsetSet(stringSet, "kiwi") ? "Yes" : "No"); // Check if 'kiwi' is a subset of string set
 
+    printf("\n");
+
     GenSet *intStringUnion = unionSet(intSet, stringSet); // Get union of integer set and string set
 
     // Check if result is NULL
@@ -356,8 +358,10 @@ void predefinedSets(){
         displaySet(*intStringUnion);
         deinitSet(intStringUnion);
     } else {
-        printf("Error getting unionSet result. Exiting.\n");
+        printf("Error getting unionSet result.\n");
     }
+
+    printf("\n");
 
     GenSet *intStringIntersect = intersectSet(intSet, stringSet); // Get intersection of integer set and string set
 
@@ -367,8 +371,10 @@ void predefinedSets(){
         displaySet(*intStringIntersect);
         deinitSet(intStringIntersect);
     } else {
-        printf("Error getting intersectSet result. Exiting.\n");
+        printf("Error getting intersectSet result.\n");
     }
+
+    printf("\n");
 
     GenSet *stringSetIntersection = intersectSet(stringSet, stringSet2); // Get intersection of string set and string set 2
 
@@ -378,8 +384,10 @@ void predefinedSets(){
         displaySet(*stringSetIntersection);
         deinitSet(stringSetIntersection);
     } else {
-        printf("Error getting intersectSet result. Exiting.\n");
+        printf("Error getting intersectSet result.\n");
     }
+
+    printf("\n");
 
     GenSet *intSetIntersection = intersectSet(intSet, intSet2); // Get intersection of integer set and integer set 2
 
@@ -389,8 +397,10 @@ void predefinedSets(){
         displaySet(*intSetIntersection);
         deinitSet(intSetIntersection);
     } else {
-        printf("Error getting intersectSet result. Exiting.\n");
+        printf("Error getting intersectSet result.\n");
     }
+
+    printf("\n");
 
     GenSet *intStringDiff = diffSet(intSet, stringSet); // Get difference between integer set and string set
 
@@ -400,7 +410,7 @@ void predefinedSets(){
         displaySet(*intStringDiff);
         deinitSet(intStringDiff);
     } else {
-        printf("Error getting diffSet result. Exiting.\n");
+        printf("Error getting diffSet result.\n");
     }
 
     deinitSet(&intSet); // Deinitialize integer set
