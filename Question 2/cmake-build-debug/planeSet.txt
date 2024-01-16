@@ -6,6 +6,3 @@ Plane Set:
 2.	Name: Boeing 777
 	Capacity: 300
 
-3.	Name: Boeing 747
-	Capacity: 416
-

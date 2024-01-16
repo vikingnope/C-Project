@@ -7,5 +7,5 @@
 /Question 2/.idea/
 /Question 1/.idea/
 
-# To remove
-/Documentation/
+# Ignore docx file
+/Documentation/CPS1011 Assignment Documentation.docx

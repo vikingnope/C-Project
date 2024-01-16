@@ -48,8 +48,8 @@ int addToSet(GenSet *set, void *element) {
 
     // Check for duplicates
     for (int i = 0; i < set->usedSize; i++) {
-        if ((*set->FunctionPointers.compareFP)((&((char *)set->elements)[i * (*set->FunctionPointers.getSizeOfFP)()]), element) == 0) {
-            if(isalpha(*((char *)(element)))) {
+        if ((*set->FunctionPointers.compareFP)((&((char *)set->elements)[i * (*set->FunctionPointers.getSizeOfFP)()]), element) == 1) {
+            if(isalpha(*(char *)(element))) {
                 printf("\nElement '%s' already exists in set.\n\n", (char *)(element));
             } else {
                 printf("\nElement '%d' already exists in set.\n\n", *(int *)(element));

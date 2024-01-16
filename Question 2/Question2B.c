@@ -40,6 +40,17 @@ int main() {
     // Displays the set
     displaySet(planetSet1);
 
+    GenSet *planeSet2 = ((GenSet *) malloc(sizeof(GenSet)));
+
+    // Initialises set with the following parameters:
+    initSet(planeSet2,1, 20, &getSizeOfPlanes, &comparePlanes, &addPlanesToSet, &displayPlanes, &exportPlanes);
+
+    // Adds the following elements to the set:
+    addToSet(planeSet2, &(Planes){"Boeing 747", 416});
+
+    // Displays the set
+    displaySet(planeSet2);
+
     // Performs union
     GenSet *unionSet1 = unionSet(planeSet1, planetSet1);
 
@@ -51,11 +62,11 @@ int main() {
     }
 
     // Performs intersection
-    GenSet *intersectSet1 = intersectSet(planeSet1, planetSet1);
+    GenSet *intersectSet1 = intersectSet(planeSet1, planeSet2);
 
     // Displays the intersection set
     if (intersectSet1 != NULL) {
-        printf("\nIntersection of Plane Set and Planet Set:\n");
+        printf("\nIntersection of Plane Set 1 and Plane Set 2:\n");
         displaySet(intersectSet1);
         deinitSet(intersectSet1); // Deinitialises the set
     }
