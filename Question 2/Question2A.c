@@ -23,6 +23,7 @@ int main() {
             while (getchar() != '\n'); // Clear input buffer
         }
 
+        while (getchar() != '\n'); // Clear input buffer
         // Switch case for main menu
         switch (mainChoice) {
             case 1:
@@ -240,7 +241,7 @@ void userDefinedSets(){
                     printf("\nEnter an integer: ");
                     while (getchar() != '\n'); // Clear input buffer
                 }
-                printf("\nIs integer set a subset of another integer set: %s", isSubsetSet(intSet, &intElement) ? "Yes" : "No"); // Check if integer set is a subset of another integer set
+                printf("\nIs '%d' a found in the integer set: %s", intElement, isSubsetSet(intSet, &intElement) ? "Yes" : "No"); // Check if integer set is a subset of another integer set
                 break;
             case 10:
                 printf("\nEnter a string: ");
@@ -249,7 +250,7 @@ void userDefinedSets(){
                     printf("\nEnter a string: ");
                     while (getchar() != '\n'); // Clear input buffer
                 }
-                printf("\nIs string set a subset of another string set: %s", isSubsetSet(stringSet, stringElement) ? "Yes" : "No"); // Check if string set is a subset of another string set
+                printf("\nIs '%s' found in the string set: %s", stringElement, isSubsetSet(stringSet, stringElement) ? "Yes" : "No"); // Check if string set is a subset of another string set
                 break;
             case 11:
                 printf("\n");
